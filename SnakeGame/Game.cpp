@@ -39,7 +39,7 @@ void Game::Update()
 
 void Game::Render()
 {
-	
+	//render current state
 
 	m_snakeGraphics->Render();
 }
@@ -49,6 +49,7 @@ void Game::CleanUp()
 	SnakeInput::CleanUp();
 
 	delete m_snakeGraphics;
+	m_snakeGraphics = nullptr;
 }
 
 void Game::Run()

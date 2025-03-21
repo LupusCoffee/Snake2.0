@@ -10,5 +10,8 @@ int main()
 
 	game.Run();
 
+	//AAHAHHH LEAAAAK
+	int* ptr = new int;
+
 	return 0;
 }
