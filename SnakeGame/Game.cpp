@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "Tools/stdafx.h"
 #include "Game.h"
 #include "Tools/SnakeGraphics.h"
 #include "Tools/SnakeInput.h"
@@ -6,22 +6,24 @@
 #include <chrono>
 #include <thread>
 
+#include "Tools/Locator.h"
+
 
 bool Game::Init()
 {
-	// Init snake graphics
-	m_snakeGraphics = new SnakeGraphics(1000, 1000, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-	if (!m_snakeGraphics->Init())
+	//Init Locator
+	if (!Locator::Init())
 	{
-		std::cerr << "Failed to initilize snake graphics!" << std::endl;
-
+		std::cerr << "Locator init failed!" << '\n';
 		return false;
 	}
 
-	// Init snake input
-	SnakeInput::Init(m_snakeGraphics);
+	//Init services
+	m_snakeGraphics = dynamic_cast<SnakeGraphics*>(Locator::GetService("SnakeGraphics"));
+	m_stateMachine = dynamic_cast<StateMachine*>(Locator::GetService("StateMachine"));
 
+	// Init snake input - I'll let snake graphics be here, is fine.
+	SnakeInput::Init(m_snakeGraphics);
 	SnakeInput::AddKeyDownCallback(std::bind(&Game::KeyDownCallback, this, std::placeholders::_1));
 
 	return true;
@@ -29,12 +31,12 @@ bool Game::Init()
 
 void Game::KeyDownCallback(int Key)
 {
-	std::cout << "Keydown: " << Key << std::endl;
+	std::cout << "Keydown: " << Key << '\n';
 }
 
 void Game::Update()
 {
-
+	
 }
 
 void Game::Render()
@@ -46,10 +48,11 @@ void Game::Render()
 
 void Game::CleanUp()
 {
-	SnakeInput::CleanUp();
-
-	delete m_snakeGraphics;
 	m_snakeGraphics = nullptr;
+	m_stateMachine = nullptr;
+
+	SnakeInput::CleanUp();
+	Locator::CleanUp();
 }
 
 void Game::Run()
@@ -69,7 +72,7 @@ void Game::Run()
 
 		Render();
 
-		#pragma region Timy Whimy
+		#pragma region Timey Whimy
 		std::chrono::duration<double, std::milli> work_time = std::chrono::system_clock::now() - timer;
 		long timeLeft = (1000 / FPS) - (long)work_time.count();
 		if (timeLeft > 0) std::this_thread::sleep_for(std::chrono::milliseconds(timeLeft));

@@ -3,6 +3,7 @@
 #include <map>
 #include <vector>
 #include <functional>
+#include "IService.h"
 
 struct Color {
 	int r, g, b;
@@ -10,7 +11,7 @@ struct Color {
 	Color(int red = 0, int green = 0, int blue = 0) : r(red), g(green), b(blue) {}
 };
 
-class SnakeGraphics
+class SnakeGraphics : public IService
 {
 public:
 	enum Alignment
@@ -84,6 +85,7 @@ public:
 	~SnakeGraphics();
 
 	bool Init();
+	void CleanUp();
 
 	void PlotTile(const int InX, const int InY, const int InOrderId, const Color InBackgroundColor, const Color InForegroundColor, const wchar_t InCharacter);
 

@@ -1,4 +1,5 @@
 #pragma once
+#include "Tools/StateMachine.h"
 
 class Game
 {
@@ -7,10 +8,10 @@ public:
 
 private:
 	const int FPS = 60;
+	float m_deltaTime = 0.0f;
 
 	SnakeGraphics* m_snakeGraphics = nullptr;
-
-	float m_deltaTime = 0.0f;
+	StateMachine* m_stateMachine = nullptr;
 
 
 	bool Init();

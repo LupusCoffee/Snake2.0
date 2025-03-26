@@ -286,6 +286,11 @@ bool SnakeGraphics::Init()
     return true;
 }
 
+void SnakeGraphics::CleanUp()
+{
+	//if there is anything that needs to be cleaned up in graphics, we'll replace it here
+}
+
 bool SnakeGraphics::UpdateWindowMessages()
 {
     MSG msg;

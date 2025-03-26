@@ -128,16 +128,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="States\GameState.h" />
+    <ClInclude Include="States\MenuState.h" />
+    <ClInclude Include="States\OutroState.h" />
+    <ClInclude Include="States\BaseState.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="StateMachine.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Tools\IService.h" />
+    <ClInclude Include="Tools\Locator.h" />
+    <ClInclude Include="Tools\StateMachine.h" />
+    <ClInclude Include="Tools\stdafx.h" />
     <ClInclude Include="Tools\SnakeGraphics.h" />
     <ClInclude Include="Tools\SnakeInput.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="States\GameState.cpp" />
+    <ClCompile Include="States\MenuState.cpp" />
+    <ClCompile Include="States\OutroState.cpp" />
+    <ClCompile Include="States\BaseState.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Tools\Locator.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="StateMachine.cpp" />
+    <ClCompile Include="Tools\StateMachine.cpp" />
     <ClCompile Include="Tools\SnakeGraphics.cpp" />
     <ClCompile Include="Tools\SnakeInput.cpp" />
   </ItemGroup>

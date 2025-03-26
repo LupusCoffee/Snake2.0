@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "Tools/stdafx.h"
 #include "Game.h"
 #include "crtdbg.h"
 
@@ -9,9 +9,6 @@ int main()
 	Game game;
 
 	game.Run();
-
-	//AAHAHHH LEAAAAK
-	int* ptr = new int;
 
 	return 0;
 }
