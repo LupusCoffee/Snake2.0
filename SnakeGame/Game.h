@@ -12,7 +12,7 @@ private:
 
 	SnakeGraphics* m_snakeGraphics = nullptr;
 	StateMachine* m_stateMachine = nullptr;
-
+	BaseState* m_currentState = nullptr;
 
 	bool Init();
 

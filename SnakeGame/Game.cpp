@@ -21,6 +21,7 @@ bool Game::Init()
 	//Init services
 	m_snakeGraphics = dynamic_cast<SnakeGraphics*>(Locator::GetService("SnakeGraphics"));
 	m_stateMachine = dynamic_cast<StateMachine*>(Locator::GetService("StateMachine"));
+	m_currentState = m_stateMachine->GetCurrentState();
 
 	// Init snake input - I'll let snake graphics be here, is fine.
 	SnakeInput::Init(m_snakeGraphics);
@@ -32,17 +33,20 @@ bool Game::Init()
 void Game::KeyDownCallback(int Key)
 {
 	std::cout << "Keydown: " << Key << '\n';
+
+	if (Key == 27) DestroyWindow(m_snakeGraphics->GetHwnd());
+
+	m_stateMachine->GetCurrentState()->KeyDown(Key); //bruh
 }
 
 void Game::Update()
 {
-	
+	m_stateMachine->GetCurrentState()->Update();     //bruh
 }
 
 void Game::Render()
 {
-	//render current state
-
+	m_stateMachine->GetCurrentState()->Render();	 //bruh
 	m_snakeGraphics->Render();
 }
 
@@ -50,6 +54,7 @@ void Game::CleanUp()
 {
 	m_snakeGraphics = nullptr;
 	m_stateMachine = nullptr;
+	m_currentState = nullptr;
 
 	SnakeInput::CleanUp();
 	Locator::CleanUp();

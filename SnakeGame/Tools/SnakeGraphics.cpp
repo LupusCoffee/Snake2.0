@@ -257,7 +257,7 @@ bool SnakeGraphics::Init()
     Hwnd = CreateWindowEx(
         exStyle,                        // Optional window styles
         L"SnakeGraphics",               // Window class name
-        L"FGSnake",                     // Window title
+        L"Suneiku Da!!",                     // Window title
         style,                          // Window style
         CW_USEDEFAULT, CW_USEDEFAULT,   // Window position
         rect.right - rect.left,         // Adjusted width
@@ -304,6 +304,11 @@ bool SnakeGraphics::UpdateWindowMessages()
     return !WindowClosed;
 }
 
+HWND SnakeGraphics::GetHwnd() const
+{
+	return Hwnd;
+}
+
 bool SnakeGraphics::IsTileWithinBounds(const int InX, const int InY) const
 {
 	return InX >= 0 && InY >= 0 && InX < NumColumns && InY < NumRows;
@@ -339,6 +344,19 @@ void SnakeGraphics::PlotText(const int InX, const int InY, const int InOrderId, 
 		}
 	}
 
+}
+
+void SnakeGraphics::ClearTile(int x, int y)
+{
+    PlotTile(x, y, 0, { 0, 0, 0 }, { 0, 0, 0 }, ' ');
+}
+
+void SnakeGraphics::ClearScreen()
+{
+	for (int y = 0; y < NumRows; y++)
+	{
+		for (int x = 0; x < NumColumns; x++) ClearTile(x, y);
+	}
 }
 
 void SnakeGraphics::PlotTile(const int InX, const int InY, const int InOrderId, const Color InBackgroundColor, const Color InForegroundColor, const wchar_t InCharacter)

@@ -8,7 +8,7 @@ std::map<std::string, IService*> Locator::services;
 
 bool Locator::Init()
 {
-	SnakeGraphics* m_graphics = new SnakeGraphics(1000, 1000, SCREEN_WIDTH, SCREEN_HEIGHT);
+	SnakeGraphics* m_graphics = new SnakeGraphics(1000, 1000, WORLD_WIDTH, WORLD_HEIGHT);
 	StateMachine* m_stateMachine = new StateMachine(State::MENU_STATE);
 
 	ProvideService("SnakeGraphics", m_graphics);

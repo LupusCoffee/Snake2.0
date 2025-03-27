@@ -5,5 +5,5 @@
 
 class SnakeGraphics;
 
-constexpr int SCREEN_WIDTH = 30;
-constexpr int SCREEN_HEIGHT = 30;
+constexpr int WORLD_WIDTH = 60;
+constexpr int WORLD_HEIGHT = 60;

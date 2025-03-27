@@ -128,6 +128,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GameObjects\GameObject.h" />
+    <ClInclude Include="GameObjects\Snake.h" />
     <ClInclude Include="States\GameState.h" />
     <ClInclude Include="States\MenuState.h" />
     <ClInclude Include="States\OutroState.h" />
@@ -139,18 +141,28 @@
     <ClInclude Include="Tools\stdafx.h" />
     <ClInclude Include="Tools\SnakeGraphics.h" />
     <ClInclude Include="Tools\SnakeInput.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameObjects\GameObject.cpp" />
+    <ClCompile Include="GameObjects\Snake.cpp" />
+    <ClCompile Include="Tools\InclusionHelper.h" />
     <ClCompile Include="States\GameState.cpp" />
     <ClCompile Include="States\MenuState.cpp" />
     <ClCompile Include="States\OutroState.cpp" />
     <ClCompile Include="States\BaseState.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Tools\ColorHelper.h" />
     <ClCompile Include="Tools\Locator.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Tools\StateMachine.cpp" />
     <ClCompile Include="Tools\SnakeGraphics.cpp" />
     <ClCompile Include="Tools\SnakeInput.cpp" />
+    <ClCompile Include="World.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Levels\Level1.txt" />
+    <Text Include="Levels\Level2.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

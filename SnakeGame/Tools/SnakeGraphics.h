@@ -91,6 +91,10 @@ public:
 
 	void PlotText(const int InX, const int InY, const int InOrderId, const Color InBackgroundColor, const wchar_t* InText, const Color InForegroundColor, Alignment InAlignment);
 
+	void ClearTile(int x, int y);
+
+	void ClearScreen();
+
 	void Render();
 
 	int GetNumColumns() const;
@@ -98,6 +102,7 @@ public:
 	int GetNumRows() const;
 
 	bool UpdateWindowMessages();
+	HWND GetHwnd() const;
 
 	void AddWndProc(std::function<LRESULT(HWND, UINT, WPARAM, LPARAM)> WndProc);
 
