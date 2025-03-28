@@ -15,15 +15,17 @@ bool GameState::Init()
 		return false;
 	}
 
-	world = World(LEVEL1);
+	world = World(LEVEL2);
 	world.CreateGameObjects();
 
 	return true;
 }
 
-void GameState::Update()
+void GameState::Update(float deltaTime)
 {
-	world.UpdateGameObjects();
+	if (!hasStarted) return;
+
+	world.UpdateGameObjects(deltaTime);
 }
 
 void GameState::Render()
@@ -33,7 +35,10 @@ void GameState::Render()
 		std::cerr << "Level cannot be rendered! \n";
 		return;
 	}
+
 	world.RenderGameObjects();
+
+	if (!hasStarted) m_snakeGraphics->PlotText(20, 5, 1, PURE_BLACK_COLOR, L"PRESS ENTER TO START", WHITE_COLOR, SnakeGraphics::Left);
 }
 
 void GameState::CleanUp()
@@ -45,5 +50,14 @@ void GameState::CleanUp()
 
 void GameState::KeyDown(int Key)
 {
+	if (Key == 13 || Key == 32)
+	{
+		hasStarted = true;
+		//lazy bum!!!
+		m_snakeGraphics->PlotText(20, 5, 1, PURE_BLACK_COLOR, L"PRESS ENTER TO START", PURE_BLACK_COLOR, SnakeGraphics::Left);
+	}
+
+	if (!hasStarted) return;
+
 	world.KeyDownGameObjects(Key);
 }

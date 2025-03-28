@@ -17,7 +17,7 @@ World::World(Level startLevel)
 	//load level so it can be rendered
 	if (!LoadLevel(startLevel)) std::cout << "Level failed to load. \n";
 
-	//create brain
+	playerAgent = new PlayerAgent(37, 38, 39, 40);
 }
 
 bool World::LoadLevel(Level level)
@@ -90,13 +90,13 @@ bool World::RenderLevel()
 
 void World::CreateGameObjects()
 {
-	gameObjects.push_back(new GameObject(10, 10, RED_COLOR, RED_COLOR));
+	gameObjects.push_back(new Snake(playerAgent, 3, 0.1f, Vector2(29,28), RED_COLOR, RED_COLOR));
 }
 
-void World::UpdateGameObjects()
+void World::UpdateGameObjects(float deltaTime)
 {
 	for (auto g_object : gameObjects)
-		g_object->Update();
+		g_object->Update(deltaTime);
 }
 
 void World::RenderGameObjects()
@@ -119,6 +119,9 @@ void World::DestroyGameObjects()
 
 void World::CleanUp()
 {
+	delete playerAgent;
+	playerAgent = nullptr;
+
 	m_graphics = nullptr;
 
 	worldMatrix = nullptr;
@@ -127,10 +130,10 @@ void World::CleanUp()
 
 void World::KeyDownGameObjects(int Key)
 {
-
+	playerAgent->KeyDown(Key);
 }
 
-Tag** World::GetWorldMatrix()
+std::vector<WorldTag>* World::GetWorldMatrix()
 {
 	return worldMatrix;
 }

@@ -25,7 +25,7 @@ bool StateMachine::Init()
 
 void StateMachine::CleanUp()
 {
-	//currentState->CleanUp(); //we probably want to run this, no?
+	currentState->CleanUp();
 	currentState = nullptr;
 
 	for (auto element : availableStates)

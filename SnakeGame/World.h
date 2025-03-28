@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 
+#include "Agent/PlayerAgent.h"
 #include "GameObjects/GameObject.h"
 #include "Tools/InclusionHelper.h"
 #include "Tools/SnakeGraphics.h"
@@ -16,14 +17,14 @@ public:
 	bool RenderLevel();
 
 	void CreateGameObjects();
-	void UpdateGameObjects();
+	void UpdateGameObjects(float deltaTime);
 	void RenderGameObjects();
 	void DestroyGameObjects();
 	void CleanUp();
 
 	void KeyDownGameObjects(int Key); // i don't like this
 
-	Tag** GetWorldMatrix();
+	std::vector<WorldTag>* GetWorldMatrix();
 
 private:
 	bool LoadLevel(Level level);
@@ -32,9 +33,9 @@ private:
 
 	std::string levelString;
 
-	Tag** worldMatrix = nullptr; //make it a vector of Vector2
-
+	std::vector<WorldTag>* worldMatrix = nullptr;
 	std::vector<GameObject*> gameObjects;
-	//PlayerAgent* playerBrain;
+
+	PlayerAgent* playerAgent = nullptr;
 };
 

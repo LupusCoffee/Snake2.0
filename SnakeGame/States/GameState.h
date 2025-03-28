@@ -9,7 +9,7 @@ public:
 	~GameState() override;
 
 	bool Init() override;
-	void Update() override;
+	void Update(float deltaTime) override;
 	void Render() override;
 	void CleanUp() override;
 
@@ -17,4 +17,6 @@ public:
 
 private:
 	World world;
+
+	bool hasStarted = false;
 };

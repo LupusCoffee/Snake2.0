@@ -7,7 +7,7 @@ GameObject::~GameObject()
 	std::cout << "Deleting game object. \n";
 }
 
-void GameObject::Update()
+void GameObject::Update(float deltaTime)
 {
 }
 
@@ -22,6 +22,7 @@ void GameObject::Render()
 
 void GameObject::CleanUp()
 {
+	std::cout << "clean up?";
 	m_graphics = nullptr;
 }
 
@@ -36,6 +37,16 @@ void GameObject::SetPosition(Vector2 vector2)
 {
 	prevPosition = position;
 	position = vector2;
+}
+
+void GameObject::AddPosition(int x, int y)
+{
+	SetPosition(position + Vector2(x,y));
+}
+
+void GameObject::AddPosition(Vector2 vector2)
+{
+	SetPosition(position + vector2);
 }
 
 const Vector2 GameObject::GetPosition()

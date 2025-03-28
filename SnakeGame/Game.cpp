@@ -41,7 +41,7 @@ void Game::KeyDownCallback(int Key)
 
 void Game::Update()
 {
-	m_stateMachine->GetCurrentState()->Update();     //bruh
+	m_stateMachine->GetCurrentState()->Update(m_deltaTime);     //bruh
 }
 
 void Game::Render()
@@ -52,12 +52,12 @@ void Game::Render()
 
 void Game::CleanUp()
 {
+	SnakeInput::CleanUp();
+	Locator::CleanUp();
+
 	m_snakeGraphics = nullptr;
 	m_stateMachine = nullptr;
 	m_currentState = nullptr;
-
-	SnakeInput::CleanUp();
-	Locator::CleanUp();
 }
 
 void Game::Run()

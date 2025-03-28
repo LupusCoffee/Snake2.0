@@ -67,7 +67,7 @@ public:
 	~MenuState() override;
 
 	bool Init() override;
-	void Update() override;
+	void Update(float deltaTime) override;
 	void Render() override;
 	void CleanUp() override;
 

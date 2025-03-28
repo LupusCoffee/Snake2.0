@@ -8,11 +8,11 @@ std::map<std::string, IService*> Locator::services;
 
 bool Locator::Init()
 {
-	SnakeGraphics* m_graphics = new SnakeGraphics(1000, 1000, WORLD_WIDTH, WORLD_HEIGHT);
 	StateMachine* m_stateMachine = new StateMachine(State::MENU_STATE);
+	SnakeGraphics* m_graphics = new SnakeGraphics(1000, 1000, WORLD_WIDTH, WORLD_HEIGHT);
 
-	ProvideService("SnakeGraphics", m_graphics);
 	ProvideService("StateMachine", m_stateMachine);
+	ProvideService("SnakeGraphics", m_graphics);
 
 	for (auto m_service : services)
 	{
@@ -28,11 +28,14 @@ bool Locator::Init()
 
 void Locator::CleanUp()
 {
-	for (auto m_service : services)
-	{
-		m_service.second->CleanUp();
-		delete m_service.second;
-	}
+	//TO-DO: fix the order dependency, or at the very least make sure it's not deeper than this.
+	services.at("StateMachine")->CleanUp();
+	delete services.at("StateMachine");
+
+	services.at("SnakeGraphics")->CleanUp();
+	delete services.at("SnakeGraphics");
+
+	services.clear();
 }
 
 IService* Locator::GetService(std::string mapKey)

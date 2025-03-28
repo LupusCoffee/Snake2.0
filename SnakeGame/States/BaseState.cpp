@@ -18,7 +18,7 @@ bool BaseState::Init()
 	return true;
 }
 
-void BaseState::Update()
+void BaseState::Update(float deltaTime)
 {
 }
 
@@ -28,7 +28,7 @@ void BaseState::Render()
 
 void BaseState::CleanUp()
 {
-	m_snakeGraphics->ClearScreen(); //fucks up when we close the window, due to the graphics being destroyed before we get here
+	m_snakeGraphics->ClearScreen();
 	m_snakeGraphics = nullptr;
 }
 

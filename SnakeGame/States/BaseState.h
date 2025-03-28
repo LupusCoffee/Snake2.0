@@ -8,7 +8,7 @@ public:
 	virtual ~BaseState();
 
 	virtual bool Init();
-	virtual void Update();
+	virtual void Update(float deltaTime);
 	virtual void Render();
 	virtual void CleanUp();
 

@@ -27,9 +27,8 @@ bool MenuState::Init()
 	return true;
 }
 
-void MenuState::Update()
+void MenuState::Update(float deltaTime)
 {
-	
 }
 
 void MenuState::Render()

@@ -128,8 +128,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Agent\BaseAgent.h" />
     <ClInclude Include="GameObjects\GameObject.h" />
     <ClInclude Include="GameObjects\Snake.h" />
+    <ClInclude Include="Agent\PlayerAgent.h" />
     <ClInclude Include="States\GameState.h" />
     <ClInclude Include="States\MenuState.h" />
     <ClInclude Include="States\OutroState.h" />
@@ -144,8 +146,10 @@
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Agent\BaseAgent.cpp" />
     <ClCompile Include="GameObjects\GameObject.cpp" />
     <ClCompile Include="GameObjects\Snake.cpp" />
+    <ClCompile Include="Agent\PlayerAgent.cpp" />
     <ClCompile Include="Tools\InclusionHelper.h" />
     <ClCompile Include="States\GameState.cpp" />
     <ClCompile Include="States\MenuState.cpp" />
