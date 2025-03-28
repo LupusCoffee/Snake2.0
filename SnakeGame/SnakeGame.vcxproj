@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Agent\BaseAgent.h" />
+    <ClInclude Include="GameObjects\Apple.h" />
     <ClInclude Include="GameObjects\GameObject.h" />
     <ClInclude Include="GameObjects\Snake.h" />
     <ClInclude Include="Agent\PlayerAgent.h" />
@@ -147,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Agent\BaseAgent.cpp" />
+    <ClCompile Include="GameObjects\Apple.cpp" />
     <ClCompile Include="GameObjects\GameObject.cpp" />
     <ClCompile Include="GameObjects\Snake.cpp" />
     <ClCompile Include="Agent\PlayerAgent.cpp" />

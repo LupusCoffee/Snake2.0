@@ -18,16 +18,17 @@ public:
 class Snake : public GameObject
 {
 public:
-	Snake(BaseAgent* agent, int tailLength = 3, float moveFrequency = 0.5f, Vector2 position = Vector2(0,0), Color bgColor = WHITE_COLOR, Color patternColor = WHITE_COLOR)
-		: GameObject(position, bgColor, patternColor), agent(agent), moveFrequency(moveFrequency)
+	Snake(BaseAgent* agent, std::vector<WorldTag*> worldMatrix, int tailLength = 3, float moveFrequency = 0.5f, Vector2 position = Vector2(0, 0), Color bgColor = WHITE_COLOR, Color patternColor = WHITE_COLOR)
+		: GameObject(position, bgColor, patternColor), agent(agent), worldMatrix(worldMatrix), moveFrequency(moveFrequency)
 	{
 		AddTail(tailLength);
 	}
-	Snake(BaseAgent* agent, int tailLength = 3, float moveFrequency = 0.5f, int x = 0, int y = 0, Color bgColor = WHITE_COLOR, Color patternColor = WHITE_COLOR)
-	: GameObject(x,y,bgColor, patternColor), agent(agent), moveFrequency(moveFrequency)
+	Snake(BaseAgent* agent, std::vector<WorldTag*> worldMatrix, int tailLength = 3, float moveFrequency = 0.5f, int x = 0, int y = 0, Color bgColor = WHITE_COLOR, Color patternColor = WHITE_COLOR)
+	: GameObject(x,y,bgColor, patternColor), agent(agent), worldMatrix(worldMatrix), moveFrequency(moveFrequency)
 	{
 		AddTail(tailLength);
 	}
+	~Snake() override;
 
 	virtual void Update(float deltaTime);
 	virtual void Render();
@@ -41,6 +42,8 @@ public:
 	void CheckCollisions();
 	void UpdateColliders();
 
+	bool isDead = false;
+
 private:
 	BaseAgent* agent = nullptr;
 
@@ -48,4 +51,6 @@ private:
 	float speedTimer;
 
 	std::vector<GameObject> snakeTail; //to-do: change this function to use only pointers to the previous tail obj
+
+	std::vector<WorldTag*> worldMatrix;
 };

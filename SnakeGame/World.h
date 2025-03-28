@@ -4,6 +4,7 @@
 
 #include "Agent/PlayerAgent.h"
 #include "GameObjects/GameObject.h"
+#include "GameObjects/Snake.h"
 #include "Tools/InclusionHelper.h"
 #include "Tools/SnakeGraphics.h"
 
@@ -24,7 +25,7 @@ public:
 
 	void KeyDownGameObjects(int Key); // i don't like this
 
-	std::vector<WorldTag>* GetWorldMatrix();
+	std::vector<WorldTag*> GetWorldMatrix();
 
 private:
 	bool LoadLevel(Level level);
@@ -33,9 +34,11 @@ private:
 
 	std::string levelString;
 
-	std::vector<WorldTag>* worldMatrix = nullptr;
+	std::vector<WorldTag*> worldMatrix;
 	std::vector<GameObject*> gameObjects;
 
 	PlayerAgent* playerAgent = nullptr;
+
+	Snake* tempSnake = nullptr;
 };
 

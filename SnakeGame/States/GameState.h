@@ -17,6 +17,4 @@ public:
 
 private:
 	World world;
-
-	bool hasStarted = false;
 };
